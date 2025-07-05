@@ -22,12 +22,6 @@ class GameScene extends Phaser.Scene {
   }
 
   setupGamepadListeners() {
-    const x = Number(this.game.config.width) / 2;
-    const text = this.add.text(x, 300, "PLEASE CONNECT CONTROLLER TO CONTINUE", {
-      fontFamily: "system-ui",
-      fontSize: 32,
-      color: "#ffffff"
-    }).setOrigin(0.5);
 
     this.input.gamepad?.on('connected', (gamepad: Phaser.Input.Gamepad.Gamepad) => {
       // Create a new player for this gamepad
@@ -46,7 +40,7 @@ class GameScene extends Phaser.Scene {
       
       // If this is the first player, start the game
       if (playerIndex === 0) {
-        text.destroy();
+        document.getElementById("gamepadAlert")!.style.display = "none";
         // this.player = newPlayer;
         this.startGame();
       }
